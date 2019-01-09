@@ -11,6 +11,7 @@ import io
 import os
 import sys
 from snipsowm.snipsowm import SnipsOWM
+from datetime_z import parse_datetime
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
@@ -82,12 +83,12 @@ def getDateTime(snips):
             return None
         if isinstance(tmp, hermes_python.ontology.InstantTimeValue ):
             val = tmp.value[:-7]
-            return datetime.strptime(val, '%Y-%m-%d %H:%M:%S')
+            return parse_datetime(val)
         elif isinstance(tmp, hermes_python.ontology.TimeIntervalValue ):
             t0 = tmp.from_date[:-7]
-            t0 = datetime.strptime(t0, '%Y-%m-%d %H:%M:%S')
+            t0 = parse_datetime(t0)
             t1 = tmp.to_date[:-7]
-            t1 = datetime.strptime(t1, '%Y-%m-%d %H:%M:%S')
+            t1 = parse_datetime(t1)
             delta = t1 - t0
             return t0 + delta / 2
     return None
