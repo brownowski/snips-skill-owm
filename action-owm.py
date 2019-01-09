@@ -11,7 +11,7 @@ import io
 import os
 import sys
 from snipsowm.snipsowm import SnipsOWM
-from datetime_z import parse_datetime
+from snipsowm.datetime_z import parse_datetime
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
